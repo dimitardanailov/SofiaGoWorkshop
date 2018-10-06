@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/dimitardanailov/SofiaGoWorkshop/internal/diagnostics"
 
@@ -67,6 +68,9 @@ func main() {
 	select {
 	case err := <-possibleErrors:
 		for _, s := range servers {
+			timeout := 5 * time.Second
+			log.Printf("\nShutdown with timeout: %s\n", timeout)
+			context.WithTimeout(context.Background(), timeout)
 			s.Shutdown(context.Background())
 		}
 		log.Fatal(err)
