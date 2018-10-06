@@ -14,7 +14,7 @@ Open your terminal and type: `https://services.k8s.community/${spec.rules.http.p
 
 ```bash
 go version
-go init
+go mod init
 go mod tidy
 go mod vendor
 go run ${custom.go}
