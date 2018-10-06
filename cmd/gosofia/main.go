@@ -6,6 +6,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/dimitardanailov/SofiaGoWorkshop/internal/diagnostics"
@@ -65,15 +67,27 @@ func main() {
 		}(c, i)
 	}
 
+	interrupt := make(chan os.Signal, 1)
+	signal.Notify(interrupt, os.Interrupt, syscall.SIGTERM)
+
 	select {
 	case err := <-possibleErrors:
-		for _, s := range servers {
-			timeout := 5 * time.Second
-			log.Printf("\nShutdown with timeout: %s\n", timeout)
-			context.WithTimeout(context.Background(), timeout)
-			s.Shutdown(context.Background())
+		log.Printf("Got an error: %v", err)
+	case sig := <-interrupt:
+		log.Printf("Recevied the signal %v", sig)
+
+	}
+
+	for _, s := range servers {
+		timeout := 5 * time.Second
+		log.Printf("Shutdown with timeout: %s", timeout)
+		ctx, cancel := context.WithTimeout(context.Background(), timeout)
+		defer cancel()
+		error := s.Shutdown(ctx)
+		if error != nil {
+			fmt.Println(error)
 		}
-		log.Fatal(err)
+		log.Printf("Server gracefully stopped")
 	}
 }
 
