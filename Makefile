@@ -2,7 +2,7 @@
 GOOS?=linux
 GOARCH?=amd64
 
-PROJECT?=github.com/dimitardanailov/SofiaGoWorkshop
+PROJECT?=github.com/dimitardanailov/sofiagoworkshop
 BUILD_PATH?=cmd/gosofia
 APP?=gosofia
 
