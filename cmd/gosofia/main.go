@@ -10,7 +10,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/dimitardanailov/SofiaGoWorkshop/internal/diagnostics"
+	"github.com/dimitardanailov/sofiagoworkshop/internal/diagnostics"
 
 	"github.com/gorilla/mux"
 )
