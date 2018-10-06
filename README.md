@@ -14,11 +14,14 @@ Open your terminal and type: `https://services.k8s.community/${spec.rules.http.p
 
 ```bash
 go version
+
+export GO111MODULE=on
 go mod init
 go mod tidy
 go mod vendor
-go run ${custom.go}
 ```
+
+Run an application: `go run ${custom.go}`
 
 ## live example
 
