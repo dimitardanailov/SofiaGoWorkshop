@@ -11,6 +11,7 @@ import (
 	"time"
 
 	"github.com/dimitardanailov/sofiagoworkshop/internal/diagnostics"
+	"github.com/dimitardanailov/sofiagoworkshop/internal/version"
 
 	"github.com/gorilla/mux"
 )
@@ -22,7 +23,7 @@ type serverConf struct {
 }
 
 func main() {
-	log.Printf("Starting the application ...")
+	log.Printf("Starting the application, v%s...", version.Version)
 
 	blPort := os.Getenv("PORT")
 	if len(blPort) == 0 {
