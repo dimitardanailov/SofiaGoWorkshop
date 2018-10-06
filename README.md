@@ -23,6 +23,12 @@ go mod vendor
 
 Run an application: `go run ${custom.go}`
 
+Get a custom module: 
+
+```bash
+go get -u -v github.com/gorilla/mux
+```
+
 ## live example
 
 Live example: https://services.k8s.community/dimitardanailov/gosofia
