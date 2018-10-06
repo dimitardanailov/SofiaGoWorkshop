@@ -1,4 +1,4 @@
-# SofiaGoWorkshop
+# Sofia Go Workshop
 
 ## yaml configurations
 
