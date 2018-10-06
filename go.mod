@@ -1,4 +1,4 @@
-module github.com/dimitardanailov/SofiaGoWorkshop
+module github.com/dimitardanailov/sofiagoworkshop
 
 require (
 	github.com/gorilla/context v1.1.1 // indirect
